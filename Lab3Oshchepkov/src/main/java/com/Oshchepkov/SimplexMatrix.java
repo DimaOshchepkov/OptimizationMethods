@@ -1,6 +1,5 @@
 package com.Oshchepkov;
 
-import java.util.Arrays;
 
 public class SimplexMatrix{
     Matrix m;
@@ -11,7 +10,7 @@ public class SimplexMatrix{
         this.m = m;
     }
 
-    public int findLeadColumn(){
+    public int getLeadColumn(){
         double[] f = m.at(m.row()- 1);
         int ind = 0;
         double value = f[0];
@@ -27,7 +26,7 @@ public class SimplexMatrix{
         return ind;
     }
 
-    public int findLeadLine(int indLeadColumn){
+    public int getLeadLine(int indLeadColumn){
         double valueFree = m.at(0)[m.column()-1];
         int ind = 0;
         for (int i = 0; i < m.row()-1; i++) {
@@ -39,5 +38,28 @@ public class SimplexMatrix{
             }
         }
         return ind;
+    }
+
+    public void normalize(int line, int col){
+        m.multy(line, 1 / m.at(line)[col]);
+        for (int i = line + 1; i < m.row(); i++) {
+            if (m.at(i)[col] != 0)
+                m.plusLine(i, line, -m.at(i)[col]);
+        }
+        for (int i = line - 1; i >= 0; i--) {
+            if (m.at(i)[col] != 0)
+                m.plusLine(i, line, -m.at(i)[col]);
+        }
+    }
+
+    public int row() {
+        return m.row();
+    }
+
+    public int column() {
+        return m.column();
+    }
+    public double[] at(int i) {
+        return m.at(i);
     }
 }

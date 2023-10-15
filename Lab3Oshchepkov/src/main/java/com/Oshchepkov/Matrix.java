@@ -1,6 +1,5 @@
 package com.Oshchepkov;
 
-import java.sql.Array;
 
 public class Matrix {
     double[][] array;
@@ -32,6 +31,19 @@ public class Matrix {
 
         for (int i = array.length; i < array.length + m.row(); i++){
             newArr[i] = m.at(i - array.length);
+        }
+        return new Matrix(newArr);
+    }
+
+    public void plusLine(int to, int from, double multiplier){
+        for (int i = 0; i < this.column(); i++){
+            array[to][i] += array[from][i] * multiplier;
+        }
+    }
+
+    public void multy(int to, double multiplier){
+        for (int i = 0; i < this.column(); i++){
+            array[to][i] *= multiplier;
         }
     }
 }

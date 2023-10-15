@@ -1,5 +1,5 @@
 package com.Oshchepkov;
 
 public interface IStageOfSimplexMethod {
-    double[] apply(SimplexMatrix m);
+    double[] apply(Matrix m);
 }
