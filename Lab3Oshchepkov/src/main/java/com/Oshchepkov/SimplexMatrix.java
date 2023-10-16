@@ -62,4 +62,7 @@ public class SimplexMatrix{
     public double[] at(int i) {
         return m.at(i);
     }
+    public double at(int row, int col) {
+        return m.at(row, col);
+    }
 }

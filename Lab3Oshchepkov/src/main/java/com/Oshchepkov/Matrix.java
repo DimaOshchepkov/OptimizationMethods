@@ -22,6 +22,10 @@ public class Matrix {
         return array[ind];
     }
 
+    public double at(int indRow, int indCol){
+        return array[indRow][indCol];
+    }
+
     public Matrix joinDown(Matrix m){
         double[][] newArr = new double[array.length + 1][array[0].length];
 
