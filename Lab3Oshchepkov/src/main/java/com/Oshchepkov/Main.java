@@ -1,13 +1,18 @@
 package com.Oshchepkov;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        double[][] arr = {{1, 3, 1, 0, 9},
-                        {1, 1, 0, 1, 7},
-                        {-2, -3, 0, 0, 0}};
-        Matrix matrix = new Matrix(arr);
+    public static void main(String[] args) throws IOException {
+        //Matrix matrix = new ReaderMatrix().read("src/main/resources/simplexMatrix.txt");
+        Matrix m2 = new ReaderMatrix().read("src/main/resources/task3-3.txt");
         SecondStage test = new SecondStage();
-        for (var x : test.apply(matrix))
+        /*for (var x : test.apply(matrix))
+            System.out.println(x);*/
+
+        System.out.println();
+
+        for (var x : test.apply(m2))
             System.out.println(x);
     }
 }

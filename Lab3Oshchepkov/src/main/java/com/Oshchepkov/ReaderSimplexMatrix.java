@@ -16,7 +16,7 @@ public class ReaderSimplexMatrix implements IReaderRestriction{
             Pattern.compile("(<=|>=|=)\\s*(\\d+)");
 
     @Override
-    public void read(String path) throws NoSuchAlgorithmException {
+    public Matrix read(String path) throws IOException {
         try( BufferedReader reader = new BufferedReader(new FileReader(path)))
         {
            var lines = reader.lines().collect(Collectors.toList());
@@ -40,11 +40,14 @@ public class ReaderSimplexMatrix implements IReaderRestriction{
                 }
                 
            }
-           throw new NoSuchAlgorithmException("als;dgj;s");
+           throw new Exception();
         }
         catch(IOException ex){
              
             System.out.println(ex.getMessage());
+            throw ex;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
     

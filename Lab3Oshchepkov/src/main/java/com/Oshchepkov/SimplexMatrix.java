@@ -15,7 +15,7 @@ public class SimplexMatrix{
         int ind = 0;
         double value = f[0];
         for (int i = 1; i < m.column() - 1; i++){
-            if (f[i] < 0 && -f[i] > value){
+            if (f[i] < 0 && -f[i] >= value){
                 ind = i;
                 value = -f[i];
             }
