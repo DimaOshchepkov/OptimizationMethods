@@ -50,4 +50,16 @@ public class Matrix {
             array[to][i] *= multiplier;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder ss = new StringBuilder();
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[0].length; j++) {
+                ss.append(array[i][j] + " ");
+            }
+            ss.append('\n');
+        }
+        return ss.toString();
+    }
 }

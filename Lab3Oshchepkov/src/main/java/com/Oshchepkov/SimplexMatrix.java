@@ -27,14 +27,16 @@ public class SimplexMatrix{
     }
 
     public int getLeadLine(int indLeadColumn){
-        double valueFree = m.at(0)[m.column()-1];
-        int ind = 0;
+        double valueFree = 1000000000000.0;
+        double valueInColumn = 1;
+        int ind = -1;
         for (int i = 0; i < m.row()-1; i++) {
-            if (m.at(indLeadColumn)[m.column()-1] != 0 &&
-                    m.at(i)[m.column()-1] / m.at(i)[indLeadColumn] <
-                    valueFree / m.at(ind)[indLeadColumn]){
+            if (m.at(i, indLeadColumn) != 0 &&
+                    m.at(i, m.column()-1) / m.at(i, indLeadColumn) >= 0 &&
+                    m.at(i, m.column()-1) / m.at(i, indLeadColumn) <= valueFree / valueInColumn){
                 ind = i;
-                valueFree = m.at(i)[m.column()-1];
+                valueFree = m.at(i,m.column()-1);
+                valueInColumn = m.at(i, indLeadColumn);
             }
         }
         return ind;
@@ -64,5 +66,10 @@ public class SimplexMatrix{
     }
     public double at(int row, int col) {
         return m.at(row, col);
+    }
+
+    @Override
+    public String toString(){
+        return m.toString();
     }
 }

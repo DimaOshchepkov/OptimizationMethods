@@ -2,7 +2,7 @@ package com.Oshchepkov;
 
 public class SecondStage implements IStageOfSimplexMethod{
     @Override
-    public double[] apply(Matrix m) {
+    public SimplexMatrix apply(Matrix m) {
      
         SimplexMatrix s = new SimplexMatrix(m);
         int leadColumn = s.getLeadColumn(), leadLine = -1;
@@ -11,9 +11,10 @@ public class SecondStage implements IStageOfSimplexMethod{
             s.normalize(leadLine, leadColumn);
             leadColumn = s.getLeadColumn();
         }
-        return extractAnswer(s);
+        return s;
     }
 
+    @Deprecated //TODO:требует доработки. Работает некорректно
     private double[] extractAnswer(SimplexMatrix s){
         var ans = new double[s.row()-1];
         for (int i = 0; i < ans.length; i++) {
